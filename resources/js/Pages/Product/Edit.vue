@@ -1,36 +1,37 @@
 <template>
+    <Head title="Edit Product"/>
     <section class="bg-gray-950 min-h-[100vh]">
         <div class="h-[100px]">
 
         </div>
-        <form @submit.prevent="handleCreate" class="w-[90%] m-auto">
+        <form @submit.prevent="handleStore" class="w-[90%] m-auto">
             <TextField
              v-model="form.name"
              placeholder="Product name"
-             :error="errors.name"
+             :error="props.errors.name"
             />
             <TextField
              v-model="form.price"
              type="number"
              placeholder="Price"
-             :error="errors.price"
+             :error="props.errors.price"
             />
             <TextField
              v-model="form.stock"
              type="number"
              placeholder="Stock"
-             :error="errors.stock"
+             :error="props.errors.stock"
             />
             <TextField
              v-model="form.description"
              placeholder="Description"
-             :error="errors.description"
+             :error="props.errors.description"
             />
             <DataListField
              v-model="form.category_name"
              :categories="categories"
              placeholder="Category"
-             :error="errors.category_name"
+             :error="props.errors.category_name"
             />
 
             <button class="text-gray-400
@@ -38,7 +39,7 @@
             h-[40px] rounded-sm hover:bg-gray-900
             transition-all ease-in"
              type="submit"
-             >Create</button>
+             >Save changes</button>
         </form>
 
     </section>
@@ -49,20 +50,21 @@ import TextField from '@/Components/Fields/TextField.vue';
 import DataListField from '@/Components/Fields/DataListField.vue'
 import { useForm } from '@inertiajs/vue3';
 
-defineProps({
+ const props = defineProps({
     errors: Object,
     categories:Array,
+    product:Array || [],
 });
 
 const form = useForm({
-    name: "",
-    category_name: "",
-    price: "",
-    stock: "",
-    description: "",
+    name: props.product.name,
+    category_name: props.product.category_name,
+    price: props.product.price,
+    stock: props.product.stock,
+    description: props.product.description,
 })
 
-const handleCreate = ()=>{
-    form.post(route('products.store'));
+const handleStore = ()=>{
+    form.put(route('products.update'));
 }
 </script>

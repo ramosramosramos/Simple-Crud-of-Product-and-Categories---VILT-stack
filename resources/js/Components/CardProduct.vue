@@ -27,15 +27,18 @@
             class="border border-gray-600
              px-3 rounded-md hover:bg-gray-800 transition-all ease-in
              ">Delete</Link>
-            <button
+            <Link   as="button"
+            :href="route('products.edit',product_id)"
             class="border border-gray-600
              px-3 rounded-md hover:bg-gray-800 transition-all ease-in
-             ">Edit</button>
+             ">Edit</Link>
         </div>
     </div>
 </template>
 
 <script setup>
+import { Link } from '@inertiajs/vue3';
+
 defineProps({
     name: {
         type: String,

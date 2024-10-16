@@ -8,6 +8,10 @@
         class="px-3 py-3 text-green-500 animate-pulse">
             {{ page.props.flash.created }}
         </div>
+        <div v-if="page.props.flash.updated"
+        class="px-3 py-3 text-green-500 animate-pulse">
+            {{ page.props.flash.updated }}
+        </div>
     </div>
 </template>
 

@@ -15,7 +15,7 @@ class CategoryController
     public function index()
     {
         $categories = Category::select(['name','description'])->get();
-        return inertia('User/Category',['categories'=>CategoryResource::collection($categories)]);
+        return inertia('Product/Category',['categories'=>CategoryResource::collection($categories)]);
     }
 
     /**

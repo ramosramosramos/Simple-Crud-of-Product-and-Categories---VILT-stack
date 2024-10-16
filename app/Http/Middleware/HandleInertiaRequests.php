@@ -37,6 +37,7 @@ class HandleInertiaRequests extends Middleware
             'flash'=>[
                 'deleted'=>session('deleted'),
                 'created'=>session('created'),
+                'updated'=>session('updated'),
             ],
         ];
     }

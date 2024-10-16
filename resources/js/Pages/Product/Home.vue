@@ -1,4 +1,5 @@
 <template>
+    <Head title="Home Product"/>
     <section class="bg-gray-950 min-h-[100vh]">
         <div class="w-[90%] m-auto mb-2 flex justify-end items-center">
             <Link :href="route('products.create')" as="button" class="bg-gray-900
@@ -10,7 +11,6 @@
             <CardProduct v-for="product in products.data " :key="product.id" :name="product.name" :price="product.price"
                 :stock="product.stock" :description="product.description" :category="product.category"
                 :product_id="product.id" />
-
         </div>
     </section>
 
