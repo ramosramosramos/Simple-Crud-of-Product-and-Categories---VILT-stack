@@ -4,7 +4,7 @@
         <div class="h-[100px]">
 
         </div>
-        <form @submit.prevent="handleStore" class="w-[90%] m-auto">
+        <form @submit.prevent="handleUpdate" class="w-[90%] m-auto">
             <TextField
              v-model="form.name"
              placeholder="Product name"
@@ -53,7 +53,7 @@ import { useForm } from '@inertiajs/vue3';
  const props = defineProps({
     errors: Object,
     categories:Array,
-    product:Array || [],
+    product:Object  ,
 });
 
 const form = useForm({
@@ -64,7 +64,7 @@ const form = useForm({
     description: props.product.description,
 })
 
-const handleStore = ()=>{
-    form.put(route('products.update'));
+const handleUpdate = ()=>{
+    form.put(route('products.update',props.product.id));
 }
 </script>

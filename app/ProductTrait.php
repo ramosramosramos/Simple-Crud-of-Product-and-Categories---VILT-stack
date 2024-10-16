@@ -23,6 +23,7 @@ trait ProductTrait
 
     public function getProduct(Product $product,$category){
        return  [
+            'id'=>$product->id,
             'name' => $product->name,
             'price' => $product->price,
             'stock' => $product->stock,
@@ -43,6 +44,7 @@ trait ProductTrait
     }
     public function handleUpdateProduct(UpdateProductRequest $request,Product $product,$category){
         $product->update([
+
             'name' => $request->name,
             'price' => $request->price,
             'stock' => $request->stock,
